@@ -1,11 +1,13 @@
 #!/bin/bash
 
-read -p "Introduce la nota numerica: " nota
+nota=$1
 
 if [ $nota -ge 9 ]; then
-	echo "Sobresaliente"
+    echo "tu nota es $nota, has sacado sobresaliente"
+
 elif [ $nota -ge 5 ]; then
-	echo "Aprobado"
-else
-	echo "Suspendido"
+    echo "tu nota es $nota, has aprobado"
+
+else 
+    echo "tu nota es $nota, has suspendido"
 fi
