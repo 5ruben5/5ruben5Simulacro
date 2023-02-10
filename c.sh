@@ -1,16 +1,16 @@
 #!/bin/bash
 
 
-aprobados=0
-suspensos=0
+cuantosAprobados=0
+cuantosSuspensos=-1
 
-while read nota; do
-  if [ $nota -ge 5 ]; then
-    aprobados=$((aprobados+1))
-  else
-    suspensos=$((suspensos+1))
-  fi
+while read linea; do
+    notas=$(echo $linea | awk {'print $3'})
+    if [ $notas -ge 5 ];then
+        ((cuantosAprobados++))
+    else 
+        ((cuantosSuspensos++))
+    fi 
 done < notas.txt
 
-echo "Aprobados: $aprobados"
-echo "Suspensos: $suspensos"
+echo "Han aprobado $cuantosAprobados y han suspendido $cuantosSuspensos"
