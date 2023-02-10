@@ -1,9 +1,18 @@
 #!/bin/bash
-# Se le pasa el nombre de la persona como parámetro
-NOMBRE="$1"
+nombre=$1
+modulo=$2
 
-# Buscamos la linea que contenga el nombre pasado como parámetro
-NOTA=$(cat notas.txt | grep "$NOMBRE" | cut -d ":" -f2)
+nota=`cat notas.txt | grep "$1" | grep "$2" | awk {'print $3'}`
 
-# Mostramos la calificación
-echo "$NOMBRE tiene una calificación de: $NOTA"
+if [ $nota -ge 9 ]; then
+    echo "tu nota es $nota, has sacado sobresaliente"
+    
+elif [ $nota -ge 5 ]; then
+    echo "tu nota es $nota, has aprobado"
+
+else 
+    echo "tu nota es $nota, has suspendido"
+fi
+
+
+echo $LineaExtraida
